@@ -47,7 +47,7 @@ export default function Home({ Products, Categorys }) {
 export async function getStaticProps() {
   try {
     const [response1, response2] = await Promise.all([
-      fetch("http://localhost:3000/api/pcbuilder"),
+      fetch("http://localhost:3000/api/products"),
       fetch("http://localhost:3000/api/all_categories"),
     ]);
 

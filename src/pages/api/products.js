@@ -2,12 +2,7 @@ import connectToDatabase from "@/lib/mongodb";
 export default async function products(req, res) {
   try {
     const client = await connectToDatabase();
-    const products = client.db("pcbuilder").collection("featured_products");
-
-    products.updateMany(
-      { Category: "Motherboard" },
-      { $set: { Category: "motherboard" } }
-    );
+    const products = client.db("pcbuilder").collection("products");
 
     if (req.method === "GET") {
       const allProductsCursor = await products.aggregate([

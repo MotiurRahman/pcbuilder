@@ -4,12 +4,12 @@ export default async function categories(req, res) {
   try {
     const client = await connectToDatabase();
 
-    const products = client.db("pcbuilder").collection("featured_products");
+    const products = client.db("pcbuilder").collection("products");
     const slug = req.query.categories;
 
     console.log("slug:", slug); // Add this line to check the value of the 'slug'
 
-    const allProducts = await products.find({ Category: slug }).toArray();
+    const allProducts = await products.find({ category: slug }).toArray();
     res.send({ message: "success", status: 200, data: allProducts });
   } catch (error) {
     console.error("Error:", error.message);

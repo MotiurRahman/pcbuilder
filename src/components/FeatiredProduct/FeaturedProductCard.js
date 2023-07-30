@@ -6,38 +6,39 @@ import { Router } from "next/router";
 import { useRouter } from "next/router";
 
 const FeaturedProductCard = ({ product }) => {
-  const { Image, ProductName, Category, Price, Status, Rating } = product;
+  const { _id, image, productName, category, price, status, individualRating } =
+    product;
   const router = useRouter();
 
-  const productDetails = (product) => {
-    router.push(`products/${product}`);
+  const productDetails = (id) => {
+    router.push(`products/${id}`);
   };
   return (
     <div
       className="card w-96 bg-base-100 shadow-xl cursor-pointer"
       onClick={() => {
-        productDetails(ProductName);
+        productDetails(_id);
       }}
     >
       <figure>
-        <img src={`/images/products/${Image}`} alt="Shoes" />
+        <img src={`/images/products/${image}`} alt="Shoes" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
-          {ProductName}!
+          {productName}!
           <div className="badge badge-secondary">
-            <FaBangladeshiTakaSign /> {Price}
+            <FaBangladeshiTakaSign /> {price}
           </div>
         </h2>
         {/* <p>If a dog chews shoes whose shoes does he choose?</p> */}
         <div className="flex flex-row justify-between">
           <div className="badge badge-outline">
-            <BiCategory /> {Category}
+            <BiCategory /> {category}
           </div>
-          <div className="badge badge-outline">{Status}</div>
+          <div className="badge badge-outline">{status}</div>
         </div>
         <div className="flex justify-end items-center">
-          <ProductRating rating={Rating}></ProductRating>
+          <ProductRating rating={individualRating}></ProductRating>
         </div>
       </div>
     </div>
