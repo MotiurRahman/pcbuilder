@@ -3,7 +3,7 @@ import React from "react";
 
 const Categories = () => {
   return (
-    <ul className="p-2">
+    <ul className="p-2 z-10">
       <li>
         <Link href="/categories/cpu">CPU / Processor</Link>
       </li>
