@@ -1,7 +1,7 @@
 // components/Rating.js
 import React from "react";
 
-const Rating = ({ rating }) => {
+const ProductRating = ({ rating }) => {
   const filledStars = Math.floor(rating); // Get the integer part of the rating
   const hasHalfStar = rating - filledStars >= 0.5; // Check if the rating has a half star
 
@@ -40,4 +40,4 @@ const Rating = ({ rating }) => {
   );
 };
 
-export default Rating;
+export default ProductRating;
