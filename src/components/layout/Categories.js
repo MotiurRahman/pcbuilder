@@ -5,25 +5,25 @@ const Categories = () => {
   return (
     <ul className="p-2 z-10">
       <li>
-        <Link href="/categories/cpu">CPU / Processor</Link>
+        <Link href="/category/cpu">CPU / Processor</Link>
       </li>
       <li>
-        <Link href="/categories/motherboard">Motherboard</Link>
+        <Link href="/category/motherboard">Motherboard</Link>
       </li>
       <li>
-        <Link href="/categories/ram">RAM</Link>
+        <Link href="/category/ram">RAM</Link>
       </li>
       <li>
-        <Link href="/categories/powersupply">Power Supply Unit</Link>
+        <Link href="/category/powersupply">Power Supply Unit</Link>
       </li>
       <li>
-        <Link href="/categories/storage">Storage Device</Link>
+        <Link href="/category/storage">Storage Device</Link>
       </li>
       <li>
-        <Link href="/categories/monitor">Monitor</Link>
+        <Link href="/category/monitor">Monitor</Link>
       </li>
       <li>
-        <Link href="/categories/others">Others</Link>
+        <Link href="/category/others">Others</Link>
       </li>
     </ul>
   );

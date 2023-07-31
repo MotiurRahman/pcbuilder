@@ -1,6 +1,5 @@
+import Reviews from "@/components/Reviews";
 import React from "react";
-import { useRouter } from "next/router";
-import Reviews from "./Reviews";
 
 const ProductDeatils = ({ productDetails }) => {
   const {
@@ -16,7 +15,13 @@ const ProductDeatils = ({ productDetails }) => {
     reviews,
   } = productDetails;
 
-  console.log("reviews", reviews);
+  function isObjectEmpty(obj) {
+    return Object.keys(obj).length === 0;
+  }
+
+  if (isObjectEmpty(productDetails)) {
+    return;
+  }
 
   const { Brand, Model } = keyFeatures;
   return (
@@ -44,11 +49,12 @@ const ProductDeatils = ({ productDetails }) => {
             <p className="p-2">
               Average Rating : {productDetails?.averageRating}
             </p>
-            {/* <div className="grid grid-cols-1 md:grid-cols-2">
+            <h1 className="text-2xl">User Reviews:</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2">
               {reviews.map((review, index) => (
                 <Reviews key={index} review={review}></Reviews>
               ))}
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
@@ -58,7 +64,7 @@ const ProductDeatils = ({ productDetails }) => {
 
 export default ProductDeatils;
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   // Generate the paths for all product IDs
   const all_products = await fetch("http://localhost:3000/api/products");
   const res = await all_products.json();
@@ -70,11 +76,11 @@ export async function getStaticPaths() {
   // Return the paths to Next.js
   return {
     paths,
-    fallback: false, // Or "blocking" or "true" depending on your use case
+    fallback: "blocking", // Or "blocking" or "true" depending on your use case
   };
-}
+};
 
-export async function getStaticProps(context) {
+export const getStaticProps = async (context) => {
   try {
     const { params } = context;
     const product = await fetch(
@@ -82,7 +88,7 @@ export async function getStaticProps(context) {
     );
     const productDetailsData = await product.json();
 
-    console.log("productDetailsData", productDetailsData.data[0]);
+    //console.log("productDetailsData", productDetailsData.data[0]);
     return {
       props: { productDetails: productDetailsData.data[0] },
       //  revalidate: 3600, // Optional: Time in seconds to revalidate (cache revalidation)
@@ -93,4 +99,4 @@ export async function getStaticProps(context) {
       props: { productDetails: {} },
     };
   }
-}
+};

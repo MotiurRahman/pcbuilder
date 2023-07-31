@@ -2,7 +2,6 @@ import React from "react";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { BiCategory } from "react-icons/bi";
 import ProductRating from "./ProductRating";
-import { Router } from "next/router";
 import { useRouter } from "next/router";
 
 const FeaturedProductCard = ({ product }) => {
@@ -11,7 +10,7 @@ const FeaturedProductCard = ({ product }) => {
   const router = useRouter();
 
   const productDetails = (id) => {
-    router.push(`products/${id}`);
+    router.push(`/products/${id}`);
   };
   return (
     <div

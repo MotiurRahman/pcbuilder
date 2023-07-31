@@ -2,17 +2,19 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import FeaturedProductCard from "@/components/FeatiredProduct/FeaturedProductCard";
 import ProductCategory from "@/components/ProductCategory";
+import Carousel from "@/components/Carousel";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ Products, Categorys }) {
   return (
-    <div className="mt-5 mb-15">
+    <div className="mb-15 mx-auto">
+      <Carousel></Carousel>
       <div className="mt-5 flex items-center justify-center flex-col">
         <h1 className="text-2xl">Featured Products</h1>
         <p>Check & Get Your Desired Product!</p>
       </div>
-      <div className="mt-10 grid grid-cols-3 gap-4">
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 ">
         {Products.map((product) => (
           <FeaturedProductCard
             key={product._id}
@@ -27,7 +29,7 @@ export default function Home({ Products, Categorys }) {
           <p>Get Your Desired Product from Featured Category!</p>
         </div>
 
-        <div className="mt-10 grid grid-cols-3 gap-4">
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           {Categorys.map((category, index) => (
             <ProductCategory key={index} category={category}></ProductCategory>
           ))}
